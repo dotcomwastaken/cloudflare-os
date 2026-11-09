@@ -3,10 +3,33 @@
 @import "tailwindcss";
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
 
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/manrope-latin-variable.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin-variable.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin-italic-variable.woff2") format("woff2-variations");
+}
+
 @theme {
-  /* ===== FONTS ===== */
-  --font-sans: "FT Kunst Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Helvetica Neue", sans-serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Newsreader", Georgia, serif;
   --font-mono: "Apercu Mono Pro", "SF Mono", Menlo, Monaco, Consolas, monospace;
 
   /* ===== TEXT SIZES (restore Tailwind defaults, overriding Kumo's 12/13/14/16px) ===== */
@@ -19,35 +42,23 @@
   --text-lg: 1.125rem;
   --text-lg--line-height: 1.75rem;
 
-  /* ===== KUMO SEMANTIC COLOR OVERRIDES =====
-     Near-neutral, barely-warm greys for every surface, border, and neutral text. The brand orange
-     is reserved for *intent only* (active item, links, primary action, focus) so it actually pops.
-     This is the single biggest lever between a "consumer/playground" feel and an enterprise one. */
-
-  /* Background tokens — near-white neutrals with a faint warm undertone */
-  --color-kumo-base: #fcfcfb;
-  --color-kumo-elevated: #f8f8f7;
-  --color-kumo-tint: #f3f3f1;
-  --color-kumo-overlay: #fbfbfa;
-  --color-kumo-recessed: #efeeec;
+  /* Select Wines' warm editorial surfaces and burgundy action color. */
+  --color-kumo-base: #faf9f8;
+  --color-kumo-elevated: #f4f3f2;
+  --color-kumo-tint: #f2ecea;
+  --color-kumo-overlay: #ffffff;
+  --color-kumo-recessed: #e9e8e7;
   --color-kumo-control: #ffffff;
-  --color-kumo-contrast: #14110f;
-  --color-kumo-fill: #e8e7e4;
-  --color-kumo-fill-hover: #dededb;
-  --color-kumo-interact: #cac8c3;
+  --color-kumo-contrast: #1a1c1c;
+  --color-kumo-fill: #e9e8e7;
+  --color-kumo-fill-hover: #e3deda;
+  --color-kumo-interact: #e3beb8;
+  --color-kumo-brand: #8b0000;
+  --color-kumo-brand-hover: #610000;
+  --color-kumo-line: #e3beb866;
+  --color-kumo-ring: #8b0000;
+  --color-kumo-bubble-user: #f2ecea;
 
-  /* Brand — warm orange accent (intent only) */
-  --color-kumo-brand: #ff4801;
-  --color-kumo-brand-hover: #e03f00;
-
-  /* Border / line tokens — neutral hairlines */
-  --color-kumo-line: #1411100f;
-  --color-kumo-ring: #cac8c3;
-
-  /* Chat surface tokens */
-  --color-kumo-bubble-user: #f1f0ee;
-
-  /* Status tints — keep functional colors, warm the tints */
   --color-kumo-info: oklch(62.3% 0.214 259.815);
   --color-kumo-info-tint: oklch(90% 0.06 250);
   --color-kumo-warning: oklch(79.5% 0.184 86.047);
@@ -57,39 +68,36 @@
   --color-kumo-success: oklch(72.3% 0.219 149.579);
   --color-kumo-success-tint: oklch(92% 0.08 150);
 
-  /* Tooltip */
-  --color-kumo-tip-shadow: #14111014;
+  --color-kumo-tip-shadow: #1a1c1c14;
   --color-kumo-arrow-edge: var(--color-kumo-line);
   --color-kumo-arrow-stroke: transparent;
 
-  /* Text color tokens — near-neutral greys (faint warm undertone, no brown) */
-  --text-color-kumo-default: #1c1a18;
-  --text-color-kumo-default-hover: #100f0d;
+  --text-color-kumo-default: #1a1c1c;
+  --text-color-kumo-default-hover: #000000;
   --text-color-kumo-inverse: #ffffff;
-  --text-color-kumo-strong: #100f0d;
-  --text-color-kumo-subtle: oklch(52% 0.006 60);
-  --text-color-kumo-inactive: oklch(66% 0.005 60);
-  --text-color-kumo-brand: #ff4801;
-  --text-color-kumo-link: #ff4801;
+  --text-color-kumo-strong: #1a1c1c;
+  --text-color-kumo-subtle: #5a403c;
+  --text-color-kumo-inactive: #866f6a;
+  --text-color-kumo-brand: #610000;
+  --text-color-kumo-link: #610000;
   --text-color-kumo-success: oklch(72.3% 0.219 149.579);
   --text-color-kumo-danger: oklch(63.7% 0.237 25.331);
   --text-color-kumo-warning: oklch(47.6% 0.114 61.907);
 
-  /* ===== CUSTOM BRAND TOKENS (for direct use alongside Kumo tokens) ===== */
-  --color-accent-100: #ff4801;
-  --color-accent-200: #ff7038;
-  --color-background-100: #fcfcfb;
-  --color-background-200: #f8f8f7;
-  --color-background-300: #f3f3f1;
-  --color-foreground-100: #100f0d;
-  --color-foreground-200: #100f0d;
-  --color-foreground-300: #1c1a18;
-  --color-border-100: #e8e7e4;
-  --color-border-100-50: #e8e7e480;
-  --color-selection-bg: #ffe9e0;
-  --color-selection-text: #ff500a;
-  --color-shadow-accent-light: #ffa683;
-  --color-shadow-accent-dark: #b13200;
+  --color-accent-100: #8b0000;
+  --color-accent-200: #610000;
+  --color-background-100: #faf9f8;
+  --color-background-200: #f4f3f2;
+  --color-background-300: #f2ecea;
+  --color-foreground-100: #1a1c1c;
+  --color-foreground-200: #5a403c;
+  --color-foreground-300: #5a403c;
+  --color-border-100: #e3beb8;
+  --color-border-100-50: #e3beb880;
+  --color-selection-bg: #f2ecea;
+  --color-selection-text: #610000;
+  --color-shadow-accent-light: #cca73066;
+  --color-shadow-accent-dark: #610000;
 
   /* Category colors */
   --color-compute-100: #0a95ff;
@@ -114,12 +122,11 @@
   --container-3xl: 48rem;
   --container-4xl: 56rem;
 
-  /* Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
 
   /* Transitions.
      Default CSS curves are too weak to feel intentional; keep them for legacy callers but add
@@ -130,36 +137,33 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-strong: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --default-transition-duration: 0.15s;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Shadows */
-  --shadow-stack: 1px 6px 6px 0 #fff3 inset, 0 0 0px 0 #ffffff59 inset,
-    0 4px 12px 0 #00000005, 0 0 0px 0 #00000005, 0 2px 12px 0 #00000008;
+  --shadow-stack: 1px 0 0 0 #ffffff80 inset, 0 16px 48px 0 #1a1c1c0a,
+    0 2px 8px 0 #1a1c1c08;
 }
 
 [data-mode="dark"] {
-  /* Seal-inspired dark palette: violet-tinted surfaces around hue 285, not neutral black. */
-  --color-kumo-base: oklch(0.115 0.012 285);
-  --color-kumo-elevated: oklch(0.155 0.011 285);
-  --color-kumo-tint: oklch(0.225 0.025 285);
-  --color-kumo-overlay: oklch(0.155 0.011 285);
-  --color-kumo-recessed: oklch(0.1 0.012 285);
-  --color-kumo-control: oklch(0.155 0.011 285);
+  --color-kumo-base: #171213;
+  --color-kumo-elevated: #1f1819;
+  --color-kumo-tint: #2b1d1f;
+  --color-kumo-overlay: #211819;
+  --color-kumo-recessed: #120e0f;
+  --color-kumo-control: #251b1c;
   --color-kumo-contrast: var(--color-kumo-brand);
   --color-kumo-strong: var(--color-kumo-brand-hover);
-  --color-kumo-fill: oklch(0.225 0.025 285);
-  --color-kumo-fill-hover: oklch(0.295 0.045 285);
-  --color-kumo-interact: oklch(0.34 0.022 285);
-  --color-kumo-line: oklch(0.34 0.022 285);
-  --color-kumo-ring: oklch(0.52 0.065 285);
-  --color-kumo-bubble-user: oklch(0.225 0.025 285);
-
-  --color-kumo-brand: #b84e00;
-  --color-kumo-brand-hover: #a54200;
+  --color-kumo-fill: #342326;
+  --color-kumo-fill-hover: #452b30;
+  --color-kumo-interact: #664147;
+  --color-kumo-line: #66414780;
+  --color-kumo-ring: #d69a96;
+  --color-kumo-bubble-user: #2b1d1f;
+  --color-kumo-brand: #9f3c42;
+  --color-kumo-brand-hover: #833036;
 
   --color-kumo-info: oklch(62.3% 0.214 259.815);
   --color-kumo-info-tint: oklch(0.25 0.065 259.815);
@@ -174,31 +178,31 @@
   --color-kumo-arrow-edge: transparent;
   --color-kumo-arrow-stroke: var(--color-kumo-line);
 
-  --text-color-kumo-default: oklch(0.92 0.01 285);
-  --text-color-kumo-default-hover: oklch(0.97 0.006 285);
+  --text-color-kumo-default: #f4f3f2;
+  --text-color-kumo-default-hover: #ffffff;
   --text-color-kumo-inverse: #ffffff;
-  --text-color-kumo-strong: oklch(0.92 0.01 285);
-  --text-color-kumo-subtle: oklch(0.66 0.02 285);
-  --text-color-kumo-inactive: oklch(0.58 0.025 285);
-  --text-color-kumo-brand: #ff8a5c;
-  --text-color-kumo-link: #ff8a5c;
+  --text-color-kumo-strong: #faf9f8;
+  --text-color-kumo-subtle: #c6a7a3;
+  --text-color-kumo-inactive: #a48783;
+  --text-color-kumo-brand: #e3beb8;
+  --text-color-kumo-link: #e3beb8;
   --text-color-kumo-success: oklch(79.2% 0.209 151.711);
   --text-color-kumo-danger: oklch(70.4% 0.191 22.216);
   --text-color-kumo-warning: oklch(82.8% 0.189 84.429);
 
-  --color-accent-100: #b84e00;
-  --color-accent-200: #ff8a5c;
-  --color-background-100: oklch(0.115 0.012 285);
-  --color-background-200: oklch(0.155 0.011 285);
-  --color-background-300: oklch(0.225 0.025 285);
-  --color-foreground-100: oklch(0.92 0.01 285);
-  --color-foreground-200: oklch(0.78 0.018 285);
-  --color-foreground-300: oklch(0.66 0.02 285);
-  --color-border-100: oklch(0.34 0.022 285);
-  --color-border-100-50: oklch(0.34 0.022 285 / 0.5);
-  --color-selection-bg: color-mix(in srgb, var(--color-kumo-brand) 28%, transparent);
-  --color-selection-text: oklch(0.97 0.006 285);
-  --color-shadow-accent-light: #ff663355;
+  --color-accent-100: #9f3c42;
+  --color-accent-200: #e3beb8;
+  --color-background-100: #171213;
+  --color-background-200: #1f1819;
+  --color-background-300: #2b1d1f;
+  --color-foreground-100: #f4f3f2;
+  --color-foreground-200: #c6a7a3;
+  --color-foreground-300: #a48783;
+  --color-border-100: #664147;
+  --color-border-100-50: #66414780;
+  --color-selection-bg: color-mix(in srgb, var(--color-kumo-brand) 32%, transparent);
+  --color-selection-text: #faf9f8;
+  --color-shadow-accent-light: #cca73044;
   --color-shadow-accent-dark: #00000080;
 
   --color-compute-100: oklch(74% 0.16 250);
@@ -214,8 +218,8 @@
   --color-status-draft: oklch(82.8% 0.189 84.429);
   --color-status-building: oklch(74% 0.16 250);
 
-  --shadow-stack: 1px 6px 6px 0 #ffffff08 inset, 0 0 0 1px #ffffff05 inset,
-    0 18px 40px 0 #00000033, 0 4px 12px 0 #0000002e;
+  --shadow-stack: 1px 0 0 0 #ffffff08 inset, 0 18px 40px 0 #00000033,
+    0 4px 12px 0 #0000002e;
 }
 
 :root {
@@ -235,8 +239,17 @@ body {
   @apply m-0 antialiased;
   overflow: hidden;
   font-family: var(--font-sans);
+  font-optical-sizing: auto;
   background-color: var(--color-kumo-base);
   color: var(--text-color-kumo-default);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
 }
 
 .app-viewport {
@@ -372,7 +385,7 @@ html {
 
 .themed-user-bubble-shadow {
   box-shadow:
-    0 1px 1px rgba(82, 16, 0, 0.03),
+    0 1px 1px rgba(26, 28, 28, 0.03),
     inset 0 1px 0 color-mix(in srgb, var(--color-kumo-fill) 65%, transparent);
 }
 
@@ -381,31 +394,31 @@ html {
 }
 
 .themed-floating-shadow {
-  box-shadow: 0 8px 20px rgba(82, 16, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(26, 28, 28, 0.1);
 }
 
 .themed-floating-shadow-lg {
-  box-shadow: 0 14px 36px rgba(82, 16, 0, 0.1);
+  box-shadow: 0 14px 36px rgba(26, 28, 28, 0.1);
 }
 
 .themed-bottom-shadow {
-  box-shadow: 0 4px 10px -8px rgba(82, 16, 0, 0.1);
+  box-shadow: 0 4px 10px -8px rgba(26, 28, 28, 0.1);
 }
 
 .themed-compact-shadow {
-  box-shadow: 0 8px 24px -20px rgba(82, 16, 0, 0.28);
+  box-shadow: 0 8px 24px -20px rgba(26, 28, 28, 0.28);
 }
 
 .themed-compact-shadow:focus-within {
-  box-shadow: 0 10px 28px -20px rgba(82, 16, 0, 0.34);
+  box-shadow: 0 10px 28px -20px rgba(26, 28, 28, 0.34);
 }
 
 .themed-card-hover-shadow:hover {
-  box-shadow: 0 8px 20px -16px rgba(82, 16, 0, 0.12);
+  box-shadow: 0 8px 20px -16px rgba(26, 28, 28, 0.12);
 }
 
 .themed-row-hover-shadow:hover {
-  box-shadow: 0 8px 20px -18px rgba(82, 16, 0, 0.28);
+  box-shadow: 0 8px 20px -18px rgba(26, 28, 28, 0.28);
 }
 
 .themed-accent-glow {
