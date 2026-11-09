@@ -519,6 +519,8 @@ const PASSTHROUGH_GATEKEEPER_VARS: Record<string, string[]> = {
   "gatekeeper-gitlab": ["GITLAB_URL", "GITLAB_API_URL", "CF_ACCESS_CLIENT_ID", "CF_ACCESS_CLIENT_SECRET"],
   // Each connection's daily read limit; unset, the in-code default.
   "gatekeeper-x": ["X_DAILY_READ_LIMIT"],
+  // The most Google Drive connections may do; unset, read and write.
+  "gatekeeper-google": ["GOOGLE_DRIVE_ACCESS"],
   // The Entra tenant (or allowlist of tenant IDs) to accept, which must be set or the gatekeeper
   // refuses to start, the most agents may do in SharePoint, Outlook and Calendar (unset: write, send
   // and schedule), and whether SharePoint asks for every site or only those granted to the app

@@ -67,22 +67,24 @@ describe("resource declarations", () => {
     expect(GOOGLE_DRIVE_RESOURCE.description).toBe(
       "Find files you can open anywhere in Drive, including shared drives, and read Docs, Sheets, " +
       "Slides, PDFs and comments. Connect all of Drive, or just one shared drive, folder or " +
-      "file, as read only or as read and write, which also lets agents comment on files with " +
-      "your approval; a Doc, spreadsheet or presentation connected on its own can be edited, " +
-      "with your approval, but not commented on. A connection request asks for read and write " +
-      "by adding ?access=write to the URL.",
+      "file, as read only or as read and write, which also lets agents comment on files, change " +
+      "who they are shared with and, in all of Drive or a folder, move them, each with your " +
+      "approval; a Doc, spreadsheet or presentation connected on its own can be edited, with " +
+      "your approval, but not commented on, moved or shared. A connection request asks for read " +
+      "and write by adding ?access=write to the URL.",
     );
     expect(GOOGLE_DRIVE_FOLDER_RESOURCE.description).toBe(
       "Browse a selected folder or shared drive, search its direct children, and read native " +
       "Google Docs, Sheets and Slides, PDFs as text, and comments. A read and write connection " +
-      "also lets agents comment on its files, with your approval; a connection request asks for " +
-      "one by adding ?access=write to the URL.",
+      "also lets agents comment on its files, move them within it and change who they are shared " +
+      "with, each with your approval; a connection request asks for one by adding ?access=write " +
+      "to the URL.",
     );
     expect(GOOGLE_DRIVE_FILE_RESOURCE.description).toBe(
       "Read metadata, comments and, for a native Google Doc, Sheet or Slides presentation, " +
       "content from one Drive file, or its text when it is a PDF. A read and write connection " +
-      "also lets agents comment on the file, with your approval; a connection request asks for " +
-      "one by adding ?access=write to the URL.",
+      "also lets agents comment on the file and change who it is shared with, each with your " +
+      "approval; a connection request asks for one by adding ?access=write to the URL.",
     );
 
     for (let { description } of [
